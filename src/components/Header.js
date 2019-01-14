@@ -5,7 +5,9 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <header>Movie Search</header>
+        <header>
+          <b>Movie Search</b>
+        </header>
       </div>
     );
   }

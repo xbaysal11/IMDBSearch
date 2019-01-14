@@ -10,7 +10,7 @@ class Layout extends React.Component {
     return (
       <AntLayout>
         <Header />
-        <Content style={{ padding: "24px 0", background: "#fff" }}>
+        <Content className="content">
           <Row>
             <Col>{this.props.children}</Col>
           </Row>

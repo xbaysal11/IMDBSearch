@@ -7,17 +7,20 @@ const { Meta } = Card;
 class ListItem extends Component {
   render() {
     return (
-      <div
-        style={{ display: "inline-flex", padding: "5%", textAlign: "center" }}
-      >
+      <div className="cards">
         <Row>
           <Col>
             <Card
               hoverable
               style={{ width: 240 }}
-              cover={<img alt="img" src={this.props.m} />}
+              cover={<img alt="img" src={this.props.post} />}
             >
-              <Meta title="Movie Title" description="www.website.com" />
+              <Meta
+                title={this.props.title}
+                description={`Type: ${this.props.type}, Year: ${
+                  this.props.year
+                }`}
+              />
             </Card>
           </Col>
         </Row>

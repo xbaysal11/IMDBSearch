@@ -34,10 +34,12 @@ class App extends Component {
           </div>
         ))} */}
         {this.state.results.map(m => (
-          <div>
-            <ListItem cover={m.Poster} />
-            {/* <img src={m.Poster} alt="" /> */}
-          </div>
+          <ListItem
+            post={m.Poster}
+            title={m.Title}
+            year={m.Year}
+            type={m.Type}
+          />
         ))}
       </Layout>
     );
