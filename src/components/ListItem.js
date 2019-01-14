@@ -20,33 +20,6 @@ class ListItem extends Component {
               <Meta title="Movie Title" description="www.website.com" />
             </Card>
           </Col>
-          {/* <Col span={6}>
-            <Card
-              hoverable
-              style={{ width: 240 }}
-              cover={<img alt="img" src={this.props.m} />}
-            >
-              <Meta title="Movie Title" description="www.website.com" />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card
-              hoverable
-              style={{ width: 240 }}
-              cover={<img alt="img" src={this.props.m} />}
-            >
-              <Meta title="Movie Title" description="www.website.com" />
-            </Card>
-          </Col>
-          <Col span={6}>
-            <Card
-              hoverable
-              style={{ width: 240 }}
-              cover={<img alt="img" src={this.props.m} />}
-            >
-              <Meta title="Movie Title" description="www.website.com" />
-            </Card>
-          </Col> */}
         </Row>
       </div>
     );
