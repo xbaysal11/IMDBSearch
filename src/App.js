@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "antd/dist/antd.css";
 import "./App.css";
-import { Layout, SearchInput } from "./components";
+import { Layout, SearchInput, ListItem } from "./components";
 import axios from "axios";
 
+const API_URL = "http://www.omdbapi.com";
 const API_KEY = "7009910c";
 
 class App extends Component {
@@ -17,9 +18,7 @@ class App extends Component {
   };
 
   async getSearch(s) {
-    const result = await axios.get(
-      `http://www.omdbapi.com?apikey=${API_KEY}&s=${s}`
-    );
+    const result = await axios.get(`${API_URL}?apikey=${API_KEY}&s=${s}`);
     this.setState({
       results: result.data.Search
     });
@@ -29,9 +28,15 @@ class App extends Component {
     return (
       <Layout>
         <SearchInput onSearch={this.getSearch} />
-        {this.state.results.map(m => (
+        {/* {this.state.results.map(m => (
           <div>
             <img src={m.Poster} alt="" />
+          </div>
+        ))} */}
+        {this.state.results.map(m => (
+          <div>
+            <ListItem cover={m.Poster} />
+            {/* <img src={m.Poster} alt="" /> */}
           </div>
         ))}
       </Layout>

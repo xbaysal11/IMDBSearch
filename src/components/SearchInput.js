@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Input } from "antd";
+import { Input, Row, Col } from "antd";
 
 const Search = Input.Search;
 
@@ -11,11 +11,15 @@ class SearchInput extends React.Component {
 
   render() {
     return (
-      <Search
-        placeholder="input search text"
-        onSearch={this.props.onSearch}
-        enterButton
-      />
+      <Row>
+        <Col span={12} offset={6}>
+          <Search
+            placeholder="input search text"
+            onSearch={this.props.onSearch}
+            enterButton
+          />
+        </Col>
+      </Row>
     );
   }
 }

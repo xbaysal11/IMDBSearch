@@ -1,17 +1,18 @@
 import React from "react";
 import { Layout as AntLayout, Row, Col } from "antd";
+import Header from "./Header";
+import "./Layout.sass";
 
 const { Content } = AntLayout;
 
 class Layout extends React.Component {
   render() {
     return (
-      <AntLayout style={{ padding: "24px 0", background: "#fff" }}>
-        <Content>
+      <AntLayout>
+        <Header />
+        <Content style={{ padding: "24px 0", background: "#fff" }}>
           <Row>
-            <Col span={12} offset={6}>
-              {this.props.children}
-            </Col>
+            <Col>{this.props.children}</Col>
           </Row>
         </Content>
       </AntLayout>

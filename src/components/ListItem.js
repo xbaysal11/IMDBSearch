@@ -1,40 +1,54 @@
-import React from "react";
-import { List, Avatar } from "antd";
+import React, { Component } from "react";
+import { Card, Row, Col } from "antd";
+import "./ListItem.sass";
 
-const data = [
-  {
-    title: "Ant Design Title 1"
-  },
-  {
-    title: "Ant Design Title 2"
-  },
-  {
-    title: "Ant Design Title 3"
-  },
-  {
-    title: "Ant Design Title 4"
-  }
-];
+const { Meta } = Card;
 
-//asdasdasd
-class ListItem extends React.Component {
+class ListItem extends Component {
   render() {
     return (
-      <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
-              title={<a href="https://ant.design">{item.title}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-          </List.Item>
-        )}
-      />
+      <div
+        style={{ display: "inline-flex", padding: "5%", textAlign: "center" }}
+      >
+        <Row>
+          <Col>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={<img alt="img" src={this.props.m} />}
+            >
+              <Meta title="Movie Title" description="www.website.com" />
+            </Card>
+          </Col>
+          {/* <Col span={6}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={<img alt="img" src={this.props.m} />}
+            >
+              <Meta title="Movie Title" description="www.website.com" />
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={<img alt="img" src={this.props.m} />}
+            >
+              <Meta title="Movie Title" description="www.website.com" />
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={<img alt="img" src={this.props.m} />}
+            >
+              <Meta title="Movie Title" description="www.website.com" />
+            </Card>
+          </Col> */}
+        </Row>
+      </div>
     );
   }
 }
