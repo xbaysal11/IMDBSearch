@@ -11,37 +11,70 @@ class App extends Component {
   constructor() {
     super();
     this.getSearch = this.getSearch.bind(this);
+    this.onSearchHandler = this.onSearchHandler.bind(this);
+    this.loadMore = this.loadMore.bind(this);
   }
 
   state = {
-    results: []
+    results: [],
+    total: 0,
+    is_loading: false,
+    query: "",
+    page: 1
   };
 
-  async getSearch(s) {
-    const result = await axios.get(`${API_URL}?apikey=${API_KEY}&s=${s}`);
+  onSearchHandler(query) {
     this.setState({
-      results: result.data.Search
+      query
+    });
+  }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.query !== this.state.query) {
+      this.setState(
+        {
+          page: 1
+        },
+        () => {
+          this.getSearch();
+        }
+      );
+    }
+  }
+
+  loadMore() {
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        this.getSearch(true);
+      }
+    );
+  }
+
+  async getSearch(is_loadmore) {
+    const result = await axios.get(
+      `${API_URL}?apikey=${API_KEY}&s=${this.state.query}&page=${
+        this.state.page
+      }`
+    );
+    this.setState({
+      results: is_loadmore
+        ? [...this.state.results, ...result.data.Search]
+        : result.data.Search
     });
   }
 
   render() {
     return (
       <Layout>
-        <SearchInput onSearch={this.getSearch} />
-        {/* {this.state.results.map(m => (
-          <div>
-            <img src={m.Poster} alt="" />
-          </div>
-        ))} */}
-        {this.state.results.map(m => (
-          <ListItem
-            key={m.imdbID}
-            post={m.Poster}
-            title={m.Title}
-            year={m.Year}
-            type={m.Type}
-          />
-        ))}
+        <SearchInput onSearch={this.onSearchHandler} />
+        <ListItem
+          movies={this.state.results}
+          is_loading={this.state.is_loading}
+          onLoadMore={this.loadMore}
+        />
       </Layout>
     );
   }
